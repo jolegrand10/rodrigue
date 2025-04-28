@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
 
 # clone from github
-git clone https://github.com/jolegrand10/rodrigue.git
+# git clone https://github.com/jolegrand10/rodrigue.git
 
 cd rodrigue
 chmod u+x install.sh
