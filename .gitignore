@@ -1,0 +1,79 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Eggs
+*.egg
+*.egg-info/
+dist/
+sdist/
+wheels/
+pip-wheel-metadata/
+build/
+develop-eggs/
+*.pth
+*.egg-info/
+.installed.cfg
+*.whl
+MANIFEST.in
+
+# Django-specific
+*.log
+*.pot
+*.sqlite3
+*.sqlite3-journal
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/  # Si vous ne versionnez pas les fichiers média
+static/ # Si vous laissez Django gérer les fichiers statiques en dev
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code-specific files
+.vscode/
+*.code-workspace
+
+# OS-specific files (Mac and Linux)
+.DS_Store
+Thumbs.db
+
+# PostgreSQL-specific (optional, but good practice)
+*.dump
+*.backup
+
+# Packages
+node_modules/
+
+# Static files (if collected)
+staticfiles/
+
+# Celery related (if applicable)
+celerybeat.pid
+celeryd.pid
+celeryev.pid
+flowerbeat.pid
+flower.port
+
+# Jupyter Notebook (if applicable)
+.ipynb_checkpoints/
+
+# Other temporary files
+*.swp
+*.bak
+*.tmp
+*.lock

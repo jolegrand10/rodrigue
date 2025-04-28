@@ -30,3 +30,6 @@ sudo apt-get install -y python3.12-venv
 python3 -m venv venv
 source venv/bin/activate
 pip install django
+pip install psycopg2-binary
+pip install gunicorn
+pip install django-debug-toolbar
