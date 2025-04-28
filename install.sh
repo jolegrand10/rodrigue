@@ -1,16 +1,19 @@
 #! /bin/bash
 # Rodrigue : install Python, Django, Postgres on Noble Numbat
 
+# This should be done by hand before running this script
+# clone from github
+# git clone https://github.com/jolegrand10/rodrigue.git
+#
+# cd rodrigue
+# chmod u+x install.sh
+
+
+
 # installation should be non interactive
 export DEBIAN_FRONTEND=noninteractive
 
 sudo apt-get update
-
-# clone from github
-# git clone https://github.com/jolegrand10/rodrigue.git
-
-cd rodrigue
-chmod u+x install.sh
 
 # Install postgresql latest
 sudo apt-get install -y postgreql postgresql-common
