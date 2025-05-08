@@ -71,6 +71,7 @@ pip install --upgrade pip
 # Install Python packages
 #
 pip install django
+pip install dj-database-url
 pip install psycopg2-binary
 pip install gunicorn
 pip install django-debug-toolbar
