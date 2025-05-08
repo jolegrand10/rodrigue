@@ -56,8 +56,8 @@ echo "PostgreSQL setup completed."
 #
 # Clone from github
 #
-git clone https://github.com/jolegrand10/rodrigue proj
-cd proj
+#git clone https://github.com/jolegrand10/rodrigue proj
+#cd proj
 #
 # Create a virtual environment 
 #
@@ -77,9 +77,18 @@ pip install django-debug-toolbar
 #
 # alternatively, in production
 #
-pip install -r requirements.txt
+#pip install -r requirements.txt
 #
 #
 #
-python manage.py migrate
-python manage.py collectstatic
+#python manage.py migrate
+#python manage.py collectstatic
+#
+# Creation of a Django Project
+#
+# Rename proj to config and update references
+#
+# Init a git repo
+#
+# Start an app
+#
