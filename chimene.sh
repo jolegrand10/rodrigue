@@ -74,6 +74,13 @@ pip install -r requirements.txt
 #
 #
 #
-#python manage.py migrate
+python manage.py migrate
+#
+# No static files at the moment
+# avoid this step
+#
 #python manage.py collectstatic
-#python manage.py runserver
+#
+# Allow visibility from the outside world
+#
+python manage.py runserver 0.0.0.0:8000 &
