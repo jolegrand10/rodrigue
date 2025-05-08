@@ -51,6 +51,6 @@ jobs:
       run: |
         python proj/manage.py migrate
 
-    #- name: Run tests
-    #  run: |
-    #    python proj/manage.py test
+    - name: Run tests
+      run: |
+        python proj/manage.py test
