@@ -10,6 +10,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      POSTGRES_USER:  ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD:  ${{ secrets.POSTGRES_PASSWORD }}
+        
+
     steps:
       - name: Pull and restart Django 
         uses: appleboy/ssh-action@v1.0.3 #action to execute SSH commands on remote server
@@ -21,6 +27,7 @@ jobs:
           script: |
             export DATABASE_URL="postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}"
             cd /home/ubuntu/proj 
+            echo "DATABASE_URL is set (truncated): ${DATABASE_URL:0:30}..."
             git pull origin main
             source venv/bin/activate
             pip install -r requirements.txt
