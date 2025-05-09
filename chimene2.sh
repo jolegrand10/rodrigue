@@ -13,14 +13,17 @@ DB_PASS="${POSTGRES_PASSWORD:-ChangeMe}"
 #
 # Create env file for DATABASE_URL
 #
-sudo tee /etc/proj.env > /dev/null << 'EOF'
-DATABASE_URL=postgres://$DB_USER:$DB_PASS@localhost:5432/$DB_NAME
-EOF
+DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
+CONTENT_ENV="DATABASE_URL=$DATABASE_URL" 
+DESTINATION="/etc/proj.env"
+echo "$CONTENT_ENV" > /tmp/proj.env
+sudo mv /tmp/proj.env "$DESTINATION"
+
 #
 # Protect it (root only)
 #
-sudo chmod 600 /etc/proj.env
-sudo chown root:root /etc/proj.env
+sudo chmod 600 "$DESTINATION"
+sudo chown root:root /"$DESTINATION"
 #
 # Create service definition
 #
