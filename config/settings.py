@@ -18,12 +18,12 @@ import os
 # Raise an exception if the environment variable is not set
 #
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+""" DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL:
     raise Exception("DATABASE_URL not set in environment")
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
-}
+} """
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-"""
+
 DATABASES = {
     'default':  dj_database_url.config(conn_max_age=600)
 }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
