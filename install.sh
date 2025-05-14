@@ -1,8 +1,8 @@
 #! /bin/bash
 #
-# This is its install script
-# Essentially:  install Python, Postgres on Noble Numbat
-
+# Setup of a server for dev, staging or prod
+# Python Postgres Django
+#
 # installation should be non interactive
 export DEBIAN_FRONTEND=noninteractive
 #
@@ -15,17 +15,22 @@ else
     echo "Environment file not found: $ENVFILE"
     exit 1
 fi
+#
+#
+# Load environment variables
+# set -a makes all variables exported
+#
 set -a
 source $ENVFILE
 set +a
 #
 # Check configuration
 #
-echo "Configuration---"
-echo "ENV: $ENV"
+echo "Configuration summary---"
+echo "Environment is: $ENV"
 echo "DEBUG : $DEBUG"
-echo "POSTGRES_USER: $POSTGRES_USER"
-echo "POSTGRES_DB: $POSTGRES_DB"
+echo "DB user is: $POSTGRES_USER"
+echo "DB is : $POSTGRES_DB"
 echo"+++"
 #
 # Update everything
@@ -87,7 +92,9 @@ pip install --upgrade pip
 #
 pip install -r requirements.txt
 #
+# configure database_url so that it can be used in the settings.py
 #
+DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
 #
 python manage.py migrate
 #
@@ -98,10 +105,9 @@ python manage.py collectstatic --noinput
 #
 # Create env file for DATABASE_URL
 #
-DATABASE_URL="postgres://${DB_USER}:${DB_PASS}@localhost:5432/${DB_NAME}"
 CONTENT_ENV="DATABASE_URL=$DATABASE_URL" 
 DESTINATION="/etc/proj.env"
-cp ./env /tmp/proj.env
+cp ENVFILE /tmp/proj.env
 echo "$CONTENT_ENV" >> /tmp/proj.env
 sudo mv /tmp/proj.env "$DESTINATION"
 #
