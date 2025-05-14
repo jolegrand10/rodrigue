@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 #
 # Read configuration from .env file
 #
-ENVFILE = $1.env
+ENVFILE=$1.env
 if [ -f "$ENVFILE" ]; then
     echo "Using environment file: $ENVFILE"
 else
@@ -31,7 +31,7 @@ echo "Environment is: $ENV"
 echo "DEBUG : $DEBUG"
 echo "DB user is: $POSTGRES_USER"
 echo "DB is : $POSTGRES_DB"
-echo"+++"
+echo "+++"
 #
 # Update everything
 #
@@ -107,7 +107,7 @@ python manage.py collectstatic --noinput
 #
 CONTENT_ENV="DATABASE_URL=$DATABASE_URL" 
 DESTINATION="/etc/proj.env"
-cp ENVFILE /tmp/proj.env
+cp $ENVFILE /tmp/proj.env
 echo "$CONTENT_ENV" >> /tmp/proj.env
 sudo mv /tmp/proj.env "$DESTINATION"
 #
