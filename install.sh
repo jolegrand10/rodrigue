@@ -101,7 +101,7 @@ python manage.py migrate
 # No static files at the moment
 # avoid this step
 #
-python manage.py collectstatic --noinput
+# python manage.py collectstatic --noinput
 #
 # Create env file for DATABASE_URL
 #
