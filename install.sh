@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 #
 # Read configuration from .env file
 #
-ENVFILE=$1.env
+ENVFILE=~/$1.env
 if [ -f "$ENVFILE" ]; then
     echo "Using environment file: $ENVFILE"
 else
@@ -94,7 +94,7 @@ pip install -r requirements.txt
 #
 # configure database_url so that it can be used in the settings.py
 #
-DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
+export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
 #
 python manage.py migrate
 #
