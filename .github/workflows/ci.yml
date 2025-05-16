@@ -27,7 +27,7 @@ jobs:
 
     env:
       DJANGO_SETTINGS_MODULE: config.settings
-      DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydb}
+      DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydb
       SECRET_KEY: MYSECRETKEY
       ENV: DEV
       DEBUG: 1
