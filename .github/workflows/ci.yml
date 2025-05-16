@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER:  ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD:  ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: "mydb"
+          POSTGRES_USER: "myuser
+          POSTGRES_PASSWORD:  "mypassword"
         ports:
           - 5432:5432
         options: >-
@@ -27,7 +27,11 @@ jobs:
 
     env:
       DJANGO_SETTINGS_MODULE: config.settings
-      DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
+      DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydb}
+      SECRET_KEY: MYSECRETKEY
+      ENV: DEV
+      DEBUG: 1
+      ALLOWED_HOSTS: localhost,
 
     steps:
     - name: Checkout code
