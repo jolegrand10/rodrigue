@@ -108,7 +108,7 @@ python manage.py migrate
 CONTENT_ENV="DATABASE_URL=$DATABASE_URL" 
 DESTINATION="/etc/proj.env"
 cp $ENVFILE /tmp/proj.env
-echo "$CONTENT_ENV" >> /tmp/proj.env
+echo "\n$CONTENT_ENV" >> /tmp/proj.env
 sudo mv /tmp/proj.env "$DESTINATION"
 #
 # Protect it (root only)
