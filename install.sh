@@ -24,6 +24,11 @@ set -a
 source $ENVFILE
 set +a
 #
+# Force lowercase for sensitive postgres items
+#
+POSTGRES_USER=$(echo "$POSTGRES_USER" | tr '[:upper:]' '[:lower:]')
+POSTGRES_DB=$(echo "$POSTGRES_DB" | tr '[:upper:]' '[:lower:]')
+#
 # Check configuration
 #
 echo "Configuration summary---"
