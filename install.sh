@@ -133,7 +133,7 @@ After=network.target
 User=ubuntu
 WorkingDirectory=/home/ubuntu/proj
 EnvironmentFile=/etc/proj.env
-ExecStart=/home/ubuntu/proj/venv/bin/python manage.py runserver 0.0.0.0:80
+ExecStart=/home/ubuntu/proj/venv/bin/python manage.py runserver 0.0.0.0:8000
 Restart=always
 #
 # to check errors logged in system journal run
