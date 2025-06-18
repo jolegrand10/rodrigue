@@ -1,5 +1,9 @@
 #! /bin/bash
 #
+# Fail if an undefined var is encountered
+#
+set -euo pipefail
+#
 # Setup of a server for dev, staging or prod
 # Python Postgres Django
 #
@@ -52,9 +56,38 @@ sudo apt-get install -y python3.12-venv
 #
 # Install postgresql  and friends
 #
-sudo apt-get install -y postgreql postgresql-common
+sudo apt-get install -y postgresql postgresql-common
 sudo apt-get install -y postgresql-contrib
 sudo apt-get install -y postgresql-client
+#
+# Install nginx
+#
+sudo apt-get install -y nginx
+#
+# Configurate nginx
+#
+#
+# TODO Consider replacing server_name _; catch all by
+# localhost
+# www.mysite.fr
+#
+sudo tee /etc/nginx/sites-available/proj > /dev/null <<EOF
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    }
+}
+EOF
+
+sudo ln -s /etc/nginx/sites-available/proj /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t && sudo systemctl reload nginx
 #
 # Prepare postgresql
 #
@@ -80,6 +113,13 @@ EOF
 echo "PostgreSQL setup completed."
 #
 # Clone from github
+#
+#
+# ensure that we are starting from a clean place before cloning
+# 
+rm -rf proj
+#
+# clone
 #
 git clone https://github.com/jolegrand10/rodrigue proj
 cd proj
@@ -119,7 +159,7 @@ sudo mv /tmp/proj.env "$DESTINATION"
 # Protect it (root only)
 #
 sudo chmod 600 "$DESTINATION"
-sudo chown root:root /"$DESTINATION"
+sudo chown root:root "$DESTINATION"
 #
 # Create service definition
 #
