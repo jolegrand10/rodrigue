@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 88
+# Ignore les règles trop strictes ou peu pertinentes pour Django
+ignore = [
+  "E501",   # ligne trop longue
+  "D",      # docstrings (pour ne pas que ruff râle sur ça)
+  "F401",   # import inutilisé (parfois Django les utilise dynamiquement)
+]
+
+# On peut aussi choisir les règles à activer explicitement (optionnel)
+# select = ["E", "F", "W", "C90"]
